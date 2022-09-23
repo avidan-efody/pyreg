@@ -1,0 +1,23 @@
+setup_env cmake/3.21.3
+
+set root=`pwd`/..
+
+cd $root/sv2py
+cmake CMakeLists.txt
+make
+
+cd $root/py2sv
+cmake CMakeLists.txt
+make
+
+setenv PYTHONPATH $root/py2sv:$root/example
+
+cd $root/run_here
+
+#xrun $root/example/tb_top.sv -sv_lib $root/sv2py/libsv2py.so
+
+#vcs $root/example/tb_top.sv 
+#./simv -load $root/sv2py/libsv2py.so
+
+#vlog $root/example/tb_top.sv
+#vsim tb_top -sv_lib $root/sv2py/libsv2py.so
